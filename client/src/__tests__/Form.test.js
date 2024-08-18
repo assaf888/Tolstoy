@@ -16,8 +16,8 @@ describe('Form component', () => {
 
   test('should handle input changes', () => {
     render(<Form />)
-    fireEvent.change(screen.getByPlaceholderText('Enter URL 1'), { target: { value: 'https://example.com' } })
-    expect(screen.getByPlaceholderText('Enter URL 1')).toHaveValue('https://example.com')
+    fireEvent.change(screen.getByPlaceholderText('Enter URL 1'), { target: { value: 'https://www.example.com' } })
+    expect(screen.getByPlaceholderText('Enter URL 1')).toHaveValue('https://www.example.com')
   })
 
   test('should add and remove input fields', () => {
@@ -31,8 +31,8 @@ describe('Form component', () => {
 
   test('should show error message for fewer than 3 URLs', async () => {
     render(<Form />)
-    fireEvent.change(screen.getByPlaceholderText('Enter URL 1'), { target: { value: 'https://example.com' } })
-    fireEvent.change(screen.getByPlaceholderText('Enter URL 2'), { target: { value: 'https://another-example.com' } })
+    fireEvent.change(screen.getByPlaceholderText('Enter URL 1'), { target: { value: 'https://www.example.com' } })
+    fireEvent.change(screen.getByPlaceholderText('Enter URL 2'), { target: { value: 'https://www.another-example.com' } })
     fireEvent.click(screen.getByText('Submit'))
     await waitFor(() => {
       expect(screen.getByText('Please enter at least 3 valid URLs.')).toBeInTheDocument()
@@ -48,9 +48,9 @@ describe('Form component', () => {
     axios.post.mockResolvedValue({ data: mockData })
 
     render(<Form />)
-    fireEvent.change(screen.getByPlaceholderText('Enter URL 1'), { target: { value: 'https://example.com' } })
-    fireEvent.change(screen.getByPlaceholderText('Enter URL 2'), { target: { value: 'https://another-example.com' } })
-    fireEvent.change(screen.getByPlaceholderText('Enter URL 3'), { target: { value: 'https://yetanother-example.com' } })
+    fireEvent.change(screen.getByPlaceholderText('Enter URL 1'), { target: { value: 'https://www.example.com' } })
+    fireEvent.change(screen.getByPlaceholderText('Enter URL 2'), { target: { value: 'https://www.another-example.com' } })
+    fireEvent.change(screen.getByPlaceholderText('Enter URL 3'), { target: { value: 'https://www.yetanother-example.com' } })
     fireEvent.click(screen.getByText('Submit'))
 
     await waitFor(() => {
@@ -70,13 +70,13 @@ describe('Form component', () => {
     axios.post.mockRejectedValue(new Error('Network Error'))
 
     render(<Form />)
-    fireEvent.change(screen.getByPlaceholderText('Enter URL 1'), { target: { value: 'https://example.com' } })
-    fireEvent.change(screen.getByPlaceholderText('Enter URL 2'), { target: { value: 'https://another-example.com' } })
-    fireEvent.change(screen.getByPlaceholderText('Enter URL 3'), { target: { value: 'https://yetanother-example.com' } })
+    fireEvent.change(screen.getByPlaceholderText('Enter URL 1'), { target: { value: 'https://www.example.com' } })
+    fireEvent.change(screen.getByPlaceholderText('Enter URL 2'), { target: { value: 'https://www.another-example.com' } })
+    fireEvent.change(screen.getByPlaceholderText('Enter URL 3'), { target: { value: 'https://www.yetanother-example.com' } })
     fireEvent.click(screen.getByText('Submit'))
 
     await waitFor(() => {
-      expect(screen.getByText('An error occurred while fetching the metadata. Please try again.')).toBeInTheDocument()
+      expect(screen.getByText('An error occurred while fetching the metadata.')).toBeInTheDocument()
     })
   })
 })

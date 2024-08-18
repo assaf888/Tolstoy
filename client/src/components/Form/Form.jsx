@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Form.css'
 import axios from 'axios'
 import { URL } from '../../consts'
+import DOMPurify from 'dompurify'
 
 const Form = () => {
   const [inputs, setInputs] = useState(['', '', ''])
@@ -41,9 +42,11 @@ const Form = () => {
       const { data } = await axios.post(URL, { urls: validInputs })
       setResults(data)
     } catch (err) {
-      setError('An error occurred while fetching the metadata. Please try again.')
+      setError('An error occurred while fetching the metadata.')
     }
   }
+
+  const sanitizedError = error ? DOMPurify.sanitize(error) : ''
 
   return (
     <div className="form-container">
@@ -76,7 +79,7 @@ const Form = () => {
         <button type="submit">Submit</button>
       </form>
 
-      {error && <div className="error-message" dangerouslySetInnerHTML={{ __html: error }} />}
+      {sanitizedError && <div className="error-message" dangerouslySetInnerHTML={{ __html: error }} />}
 
       <div className="results-container">
         {results.map((result, index) => (

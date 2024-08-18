@@ -45,27 +45,27 @@ describe('POST /api/fetch-metadata', () => {
         'https://www.wikipedia.com', 
         'https://www.ynet.co.il', 
         'invalid-url'
-      ];
+      ]
       const response = await request(app)
         .post('/api/fetch-metadata')
         .send({ urls })
-        .expect(200);
+        .expect(200)
     
-      expect(response.body).toBeInstanceOf(Array);
-      expect(response.body.length).toBe(urls.length);
+      expect(response.body).toBeInstanceOf(Array)
+      expect(response.body.length).toBe(urls.length)
     
-      expect(response.body[0]).toHaveProperty('title');
-      expect(response.body[0]).toHaveProperty('description');
-      expect(response.body[0]).toHaveProperty('image');
-      expect(response.body[1]).toHaveProperty('title');
-      expect(response.body[1]).toHaveProperty('description');
-      expect(response.body[1]).toHaveProperty('image');
-      expect(response.body[2]).toHaveProperty('title');
-      expect(response.body[2]).toHaveProperty('description');
-      expect(response.body[2]).toHaveProperty('image');
+      expect(response.body[0]).toHaveProperty('title')
+      expect(response.body[0]).toHaveProperty('description')
+      expect(response.body[0]).toHaveProperty('image')
+      expect(response.body[1]).toHaveProperty('title')
+      expect(response.body[1]).toHaveProperty('description')
+      expect(response.body[1]).toHaveProperty('image')
+      expect(response.body[2]).toHaveProperty('title')
+      expect(response.body[2]).toHaveProperty('description')
+      expect(response.body[2]).toHaveProperty('image')
     
-      expect(response.body[3].error).toBe('Invalid URL format');
-    });
+      expect(response.body[3].error).toBe('Invalid URL format')
+    })
   })
 
   describe('Testing Invalid URL Format', () => {
