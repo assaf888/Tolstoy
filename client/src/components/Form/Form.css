@@ -1,0 +1,134 @@
+.form-container {
+  margin: 20px;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-container input {
+  padding: 8px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-container button {
+  padding: 10px 20px;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+}
+
+.form-container button:hover {
+  background-color: #21a1f1;
+}
+
+.results-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.result-item {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  max-width: 500px;
+  padding: 20px;
+  margin-bottom: 10px;
+  width: 80%;
+  text-align: left;
+}
+
+.result-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.input-wrapper input {
+  flex: 1; 
+}
+
+.input-wrapper:nth-child(n+5) {
+  margin-right: 58px;
+}
+
+.info-icon {
+  margin-left: 10px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  color: #007bff;
+  background-color: #e0e0e0; 
+  border-radius: 50%; 
+  width: 24px; 
+  height: 24px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px; 
+}
+
+.info-icon .tooltip {
+  visibility: hidden;
+  width: 200px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+}
+
+.info-icon .tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.info-icon:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.remove-button {
+  margin-right: 10px;
+}
+
